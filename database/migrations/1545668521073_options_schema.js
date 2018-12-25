@@ -9,11 +9,13 @@ class OptionsSchema extends Schema {
       this.create('options', (table) => {
         table.increments()
         table.string('option_text')
+        table.string('creator_id').references('id').inTable('users')
         table.timestamps()
       }),
       this.create('option_attachments', (table) => {
         table.increments()
         table.integer('option_id').references('id').inTable('options')
+        table.string('system_path')
         table.timestamps()
       })
     ])

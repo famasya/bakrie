@@ -9,9 +9,10 @@ class QuestionsSchema extends Schema {
       table.increments()
       table.string('question_text')
       table.boolean('is_active').defaultTo(true)
-      table.integer('question_type_id').references('id').inTable('question_types')
       table.timestamps()
       table.timestamp('deleted_at').nullable().defaultTo(null)
+      table.integer('question_type_id').references('id').inTable('question_types')
+      table.integer('creator_id').references('id').inTable('users')
     })
   }
 
